@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
@@ -10,16 +12,22 @@ public class Character : MonoBehaviour
 
     [SerializeField] private FirePointPosition firePoint;
     [SerializeField] private GameObject bullet;
-    private Rigidbody2D rbody;
-    private Animator animator;
+    public Rigidbody2D rbody;
+    public Animator animator;
     
 
-    Vector2 lastInputVector;
+    Vector2 lastInputVector = Vector2.up;
     private bool isDiagonal = false;
     private bool noDelayStarted = false;
     private float delay = 0.05f;
 
     public Animator CharacterAnimator { get { return animator; } }
+    public Rigidbody2D Rbody { get { return rbody; } }
+
+    public Text timer;
+    public bool record = false;
+    public long seconds;
+
 
     public void Move(Vector2 inputVector, float speed)
     {
@@ -63,24 +71,23 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Shoot() 
-    {
-        ReceiveDamage(1);
-        rbody.velocity = Vector2.zero;
-        animator.Play("Shoot");
-    }
-
     public void CreateBullet()
     {
-        CharacterStats.instance.onShoot();
+        CharacterStats.instance.CharacterShooted();
         firePoint.SetCurrentPosition(lastInputVector);
         Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation).GetComponent<Bullet>().SetBulletDirection(lastInputVector);
+        AudioManager.instance.Play("PlayerShot");
     }
 
     public void ReceiveDamage(int damageAmount)
     {
         CharacterStats.instance.HealthPoint = CharacterStats.instance.HealthPoint - damageAmount;
         CharacterStats.instance.onHeatlhChanged();
+    }
+
+    public void OnDestroyAnimation()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private IEnumerator NoMoreDiagonal()
@@ -93,10 +100,12 @@ public class Character : MonoBehaviour
     private void Start()
     {
         state = new StateMachine();
-
         grounding = new GroundedState(gameObject, state);
         shooting = new ShootingState(gameObject, state);
         state.Initialize(grounding);
+        seconds = 0;
+        record = true;
+        StartCoroutine(AddValueEachSecond());
     }
     private void Awake()
     {
@@ -104,15 +113,49 @@ public class Character : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private bool isPlaying = false;
     private void Update()
     {
-        state.CurrentState.HandleInput();
+        if (state.CurrentState != null)
+        {
+            state.CurrentState.HandleInput();
 
-        state.CurrentState.LogicUpdate();
+            state.CurrentState.LogicUpdate();
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+        {
+            if (!isPlaying)
+            {
+                isPlaying = true;
+                AudioManager.instance.Play("Walk");
+            } 
+        } else
+        {
+            if (isPlaying)
+            {
+                AudioManager.instance.Stop("Walk");
+                isPlaying = false;
+            }
+        }
     }
-
+    private IEnumerator AddValueEachSecond()
+    {
+        while (record)
+        {
+            yield return new WaitForSeconds(1);
+            if (GameManager.instance.countOfEnemies != 0 && CharacterStats.instance.HealthPoint != 0)
+            {
+                seconds++;
+            }
+            TimeSpan t = TimeSpan.FromSeconds(seconds);
+            timer.text = t.ToString(@"mm\:ss");
+        }
+    }
     private void FixedUpdate()
     {
-        state.CurrentState.PhysicsUpdate();
+        if (state.CurrentState != null)
+        {
+            state.CurrentState.PhysicsUpdate();
+        }
     }
 }

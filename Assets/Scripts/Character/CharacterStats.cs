@@ -4,30 +4,52 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    private const int MAX_AMMO_IN_CYLINDER = 6;
+    public const int MAX_AMMO_IN_CYLINDER = 6;
+    public const int MAX_HEALTHPOINTS = 3;
     public static CharacterStats instance = null;
 
     private int heatlhPoint;
     private int ammoInCylinder;
     private int ammoReload;
-
+    private int money;
     public int HealthPoint { get { return heatlhPoint; } set { heatlhPoint = value; } }
     public int AmmoInCylinder { get { return ammoInCylinder; } set { ammoInCylinder = value; } }
     public int AmmoReload { get { return ammoReload; } set { ammoReload = value; } }
+    public int Money { get { return money; } set { money = value; } }
 
     public delegate void onEvent();
-    public onEvent onShoot;
+    public onEvent onAmmoChanged;
     public onEvent onHeatlhChanged;
     public void CharacterShooted()
     {
+        //if (ammoInCylinder > 0 || ammoReload > 0)
+        //{
+        //    ammoInCylinder -= 1;
+        //    if (ammoInCylinder == 0 && ammoReload > 0)
+        //    {
+        //        ammoInCylinder = MAX_AMMO_IN_CYLINDER;
+        //        ammoReload -= 1;
+        //    }
+        //    //onAmmoChanged();
+        //}
         if (ammoInCylinder > 0)
         {
             ammoInCylinder -= 1;
-            if (ammoInCylinder == 0 && ammoReload > 0)
+        }
+        ReloadAmmo();
+        onAmmoChanged();
+
+    }
+
+    public void ReloadAmmo()
+    {
+        if (ammoInCylinder <= 0)
+        {
+            if (ammoReload > 0)
             {
-                ammoInCylinder = MAX_AMMO_IN_CYLINDER;
                 ammoReload -= 1;
-            } 
+                ammoInCylinder = MAX_AMMO_IN_CYLINDER;
+            }
         }
     }
 
@@ -44,10 +66,10 @@ public class CharacterStats : MonoBehaviour
 
     private void InitializeInstance()
     {
-        heatlhPoint = 5;
+        heatlhPoint = MAX_HEALTHPOINTS;
         ammoInCylinder = MAX_AMMO_IN_CYLINDER;
-        ammoReload = 0;
-        onShoot += CharacterShooted;
+        ammoReload = 2;
+        money = 0;
 }
 
     void Update()

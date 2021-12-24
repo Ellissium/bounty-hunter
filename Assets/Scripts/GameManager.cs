@@ -4,29 +4,55 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
     public static GameManager instance = null;
+    public GameObject player;
+    public int countOfEnemies;
+    private bool wasExploded = false;
+    public long recordsInSeconds;
+    public static GameManager Instance { get { return instance; } }
 
-    private void Start()
+
+    private void Awake()
     {
-        if (instance == null)
+        AudioManager.instance.Stop("MenuMusic");
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
         {
             instance = this;
-        } 
-        else if (instance == this)
-        {
-            Destroy(gameObject);
+            recordsInSeconds = 0;
         }
-        DontDestroyOnLoad(gameObject);
-        InitializeGameManager();
+        AudioManager.instance.Play("GameMusic");
     }
 
     private void InitializeGameManager()
     {
-        // TODO: When manager has been initialized   
+        countOfEnemies = 0;
     }
 
     private void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Z) && Input.GetKey(KeyCode.X) && Input.GetKeyDown(KeyCode.C))
+        {
+            CharacterStats.instance.AmmoReload += 1;
+            CharacterStats.instance.ReloadAmmo();
+            CharacterStats.instance.onAmmoChanged();
+            Debug.Log(instance == null);
+        }
+        if (CharacterStats.instance.HealthPoint <= 0)
+        {
+            player.GetComponent<Character>().grounding.movementSpeed = 0f;
+            player.GetComponent<Character>().state.ChangeState(null);
+            player.GetComponent<Character>().animator.Play("Destroy");
+            player.GetComponent<Character>().rbody.velocity = Vector2.zero;
+            if (!wasExploded)
+            {
+                AudioManager.instance.Play("Explosion");
+                wasExploded = true;
+            }
+        }
     }
 }

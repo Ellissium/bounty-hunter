@@ -111,11 +111,18 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
-            pause.SetActive(true);
-            Time.timeScale = 0;
+            if (pause.activeSelf)
+            {
+                PauseOff();
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                pause.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
     }
 

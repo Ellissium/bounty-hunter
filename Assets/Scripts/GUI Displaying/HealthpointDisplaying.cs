@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,13 +64,13 @@ public class HealthpointDisplaying : MonoBehaviour
             {
                 currentHealthText.fontSize = 14;
                 currentHealthText.fontStyle = FontStyle.Normal;
-                currentHealthText.text = "You  Have  Max  Health";
+                currentHealthText.text = "You Have Max Health";
             }
             else
             {
-                currentHealthText.fontSize = 8;
+                currentHealthText.fontSize = 14;
                 currentHealthText.fontStyle = FontStyle.Bold;
-                currentHealthText.text = "”  ¬¿—  Ã¿ —»Ã¿À‹Õ≈  «ƒŒ–Œ¬'ﬂ";
+                currentHealthText.text = "–£ –í–ê–° –ú–ê–ö–°–ò–ú–ê–õ–¨–ù–ï –ó–î–û–†–û–í'–Ø";
             }
             yield return new WaitForSeconds(1f);
             currentHealthText.text = "";

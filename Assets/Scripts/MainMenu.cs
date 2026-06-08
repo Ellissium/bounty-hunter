@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         AudioManager.instance.Play("MenuMusic");
     }
+
     public void PlayGame()
     {
         SceneManager.LoadScene("EllissiumScene");

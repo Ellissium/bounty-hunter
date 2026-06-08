@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
@@ -83,47 +83,47 @@ public class Localization : MonoBehaviour
         {
             foreach (GameObject buttonText in buttonsText)
             {
-                buttonText.GetComponent<Text>().fontSize = 8;
+                buttonText.GetComponent<Text>().fontSize = 11;
                 buttonText.GetComponent<Text>().fontStyle = FontStyle.Bold;
                 Debug.Log(buttonText.GetComponent<Text>().fontSize);
             }
             
             foreach (GameObject defaultText in defaultsText)
             {
-                defaultText.GetComponent<Text>().fontSize = 15;
+                defaultText.GetComponent<Text>().fontSize = 20;
                 defaultText.GetComponent<Text>().fontStyle = FontStyle.Bold;
             }
 
-            dropdawn.GetComponent<Dropdown>().options[0].text = "����   ������";
-            dropdawn.GetComponent<Dropdown>().options[1].text = "������";
-            dropdawn.GetComponent<Dropdown>().options[2].text = "�������";
-            dropdawn.GetComponent<Dropdown>().options[3].text = "������";
-            dropdawn.GetComponent<Dropdown>().options[4].text = "����   ������";
-            dropdawn.GetComponent<Dropdown>().options[5].text = "������";
-            itemText.fontSize = 14;
+            dropdawn.GetComponent<Dropdown>().options[0].text = "Дуже Низька";
+            dropdawn.GetComponent<Dropdown>().options[1].text = "Низька";
+            dropdawn.GetComponent<Dropdown>().options[2].text = "Середня";
+            dropdawn.GetComponent<Dropdown>().options[3].text = "Висока";
+            dropdawn.GetComponent<Dropdown>().options[4].text = "Дуже Висока";
+            dropdawn.GetComponent<Dropdown>().options[5].text = "Ультра";
+            itemText.fontSize = 18;
             itemText.fontStyle = FontStyle.Bold;
 
             labelText.text = dropdawn.GetComponent<Dropdown>().options[itemIndex].text;
-            labelText.fontSize = 14;
+            labelText.fontSize = 18;
             labelText.fontStyle = FontStyle.Bold;
 
-            muteSoundText.text = "���/����   ����";
-            soundVolumeText.text = "���Ͳ���   �����";
-            graphicsQualityText.text = "�ʲ���   ���Բ��";
-            languageText.text = "����";
-            generalText.text = "�����Ͳ";
-            controlText.text = "�����˲���";
-            playText.text = "�����";
-            settingsText.text = "������������";
-            aboutUsText.text = "��� ���";
-            exitText.text = "��ղ�";
-            aboutUsMenuText.text = "������   ���";
-            walkText.text = "������";
-            shootText.text = "��в����";
-            pauseText.text = "�����";
-            interactionText.text = "������Ĳ�";
-            bestTimeText.text = "���������   ���:";
-            lastTimeText.text = "�����Ͳ�   ���:";
+            muteSoundText.text = "Вмк/Вимк Звук";
+            soundVolumeText.text = "Гучність Звуку";
+            graphicsQualityText.text = "Якість Графіки";
+            languageText.text = "Мова";
+            generalText.text = "Загальні";
+            controlText.text = "Керування";
+            playText.text = "Грати";
+            settingsText.text = "Налаштування";
+            aboutUsText.text = "Про нас";
+            exitText.text = "Вихід";
+            aboutUsMenuText.text = "Ця гра була створена як навчальний курсовий проєкт командою з двох друзів — Єлисея Черкова та Миколи Ткаченка. Цей продукт є повністю некомерційним і розроблений виключно для академічних та наукових цілей.";
+            walkText.text = "Ходити";
+            shootText.text = "Стріляти";
+            pauseText.text = "Пауза";
+            interactionText.text = "Взаємодія";
+            bestTimeText.text = "Найкращий Час:";
+            lastTimeText.text = "Останній Час:";
             DrawTextInfo();
         }
         else if (localizationType == "en")
@@ -140,11 +140,11 @@ public class Localization : MonoBehaviour
                 defaultText.GetComponent<Text>().fontStyle = FontStyle.Normal;
             }
        
-            dropdawn.GetComponent<Dropdown>().options[0].text = "Very   Low";
+            dropdawn.GetComponent<Dropdown>().options[0].text = "Very Low";
             dropdawn.GetComponent<Dropdown>().options[1].text = "Low";
             dropdawn.GetComponent<Dropdown>().options[2].text = "Medium";
             dropdawn.GetComponent<Dropdown>().options[3].text = "High";
-            dropdawn.GetComponent<Dropdown>().options[4].text = "Very   High";
+            dropdawn.GetComponent<Dropdown>().options[4].text = "Very High";
             dropdawn.GetComponent<Dropdown>().options[5].text = "Ultra";
             itemText.fontSize = 18;
             itemText.fontStyle = FontStyle.Normal;
@@ -153,23 +153,23 @@ public class Localization : MonoBehaviour
             labelText.fontSize = 18;
             labelText.fontStyle = FontStyle.Normal;
 
-            muteSoundText.text = "Mute/Unmute   Sound";
-            soundVolumeText.text = "Sound   Volume";
-            graphicsQualityText.text = "Graphics   Quality";
+            muteSoundText.text = "Mute/Unmute Sound";
+            soundVolumeText.text = "Sound Volume";
+            graphicsQualityText.text = "Graphics Quality";
             languageText.text = "Language";
             generalText.text = "General";
             controlText.text = "Control";
             playText.text = "Play";
             settingsText.text = "Settings";
-            aboutUsText.text = "About   Us";
+            aboutUsText.text = "About Us";
             exitText.text = "Exit";
-            aboutUsMenuText.text = "Write   Here";
+            aboutUsMenuText.text = "This game was created as an educational course project by a team of two friends, Yelysei Cherkov and Mykola Tkachenko. This product is entirely non-commercial and was developed for academic and scientific purposes only.";
             walkText.text = "Walk";
             shootText.text = "Shoot";
             pauseText.text = "Pause";
             interactionText.text = "Interaction";
-            bestTimeText.text = "Best   Time:";
-            lastTimeText.text = "Last   Time:";
+            bestTimeText.text = "Best Time:";
+            lastTimeText.text = "Last Time:";
             DrawTextInfo();
         }
     }

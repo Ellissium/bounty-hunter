@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,35 +61,35 @@ public class LocalizationMainScene : MonoBehaviour
         {
             foreach (GameObject buttonText in buttonsText)
             {
-                buttonText.GetComponent<Text>().fontSize = 8;
+                buttonText.GetComponent<Text>().fontSize = 11;
                 buttonText.GetComponent<Text>().fontStyle = FontStyle.Bold;
             }
 
             foreach (GameObject defaultText in defaultsText)
             {
-                defaultText.GetComponent<Text>().fontSize = 15;
+                defaultText.GetComponent<Text>().fontSize = 20;
                 defaultText.GetComponent<Text>().fontStyle = FontStyle.Bold;
             }
 
-            dropdawn.GetComponent<Dropdown>().options[0].text = "ƒ”∆≈   Õ»«‹ ¿";
-            dropdawn.GetComponent<Dropdown>().options[1].text = "Õ»«‹ ¿";
-            dropdawn.GetComponent<Dropdown>().options[2].text = "—≈–≈ƒÕﬂ";
-            dropdawn.GetComponent<Dropdown>().options[3].text = "¬»—Œ ¿";
-            dropdawn.GetComponent<Dropdown>().options[4].text = "ƒ”∆≈   ¬»—Œ ¿";
-            dropdawn.GetComponent<Dropdown>().options[5].text = "”À‹“–¿";
-            itemText.fontSize = 14;
+            dropdawn.GetComponent<Dropdown>().options[0].text = "–î—É–∂–µ –ù–∏–∑—å–∫–∞";
+            dropdawn.GetComponent<Dropdown>().options[1].text = "–ù–∏–∑—å–∫–∞";
+            dropdawn.GetComponent<Dropdown>().options[2].text = "–°–µ—Ä–µ–¥–Ω—è";
+            dropdawn.GetComponent<Dropdown>().options[3].text = "–í–∏—Å–æ–∫–∞";
+            dropdawn.GetComponent<Dropdown>().options[4].text = "–î—É–∂–µ –í–∏—Å–æ–∫–∞";
+            dropdawn.GetComponent<Dropdown>().options[5].text = "–£–ª—å—Ç—Ä–∞";
+            itemText.fontSize = 18;
             itemText.fontStyle = FontStyle.Bold;
 
             labelText.text = dropdawn.GetComponent<Dropdown>().options[itemIndex].text;
-            labelText.fontSize = 14;
+            labelText.fontSize = 18;
             labelText.fontStyle = FontStyle.Bold;
 
-            muteSoundText.text = "¬ À/¬» À   «¬” ";
-            soundVolumeText.text = "√”◊Õ≤—“‹   «¬” ”";
-            graphicsQualityText.text = "ﬂ ≤—“‹   √–¿‘≤ »";
-            languageText.text = "ÃŒ¬¿";
-            mainMenuText.text = "√ŒÀŒ¬Õ≈ Ã≈Õﬁ";
-            restartText.text = "œ≈–≈«¿œ”— ";
+            muteSoundText.text = "–í–º–∫/–í–∏–º–∫ –ó–≤—É–∫";
+            soundVolumeText.text = "–ì—É—á–Ω—ñ—Å—Ç—å –ó–≤—É–∫—É";
+            graphicsQualityText.text = "–Ø–∫—ñ—Å—Ç—å –ì—Ä–∞—Ñ—ñ–∫–∏";
+            languageText.text = "–ú–æ–≤–∞";
+            mainMenuText.text = "–ì–æ–ª–æ–≤–Ω–µ –ú–µ–Ω—é";
+            restartText.text = "–ü–µ—Ä–µ–∑–∞–ø—É—Å–∫";
         }
 
         else if (localizationType == "en")

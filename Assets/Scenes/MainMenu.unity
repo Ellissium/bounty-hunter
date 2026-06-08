@@ -3890,6 +3890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e190837c644284cb89b503fd5a411f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingsMenu: {fileID: 1300134731}
+  mainMenuPanel: {fileID: 563276860}
+  aboutUsMenu: {fileID: 1022386533}
   ua: {fileID: 862972975}
   en: {fileID: 1016800496}
   unmute: {fileID: 876878398}
@@ -4824,8 +4827,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 420, y: 145}
+  m_AnchoredPosition: {x: -0, y: -4.7408}
+  m_SizeDelta: {x: 423.8271, y: 213.8893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486496339
 MonoBehaviour:
@@ -4854,17 +4857,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This   project   was   developed   as   a   course   project   for   the  
-    educational   institution   "Black   Sea   National   University   named   after  
-    Peter   Mogila",   a   student   of   group   No.   1234,   Nikolai   Tkachenko.  
-    This   product   is   not   a   commercial   product   and   is   for   scientific  
-    purposes   only.
+  m_Text: This game was created as an educational course project by a team of two
+    friends, Yelysei Cherkov and Mykola Tkachenko. This product is entirely non-commercial
+    and was developed for academic and scientific purposes only.
 --- !u!222 &1486496340
 CanvasRenderer:
   m_ObjectHideFlags: 0

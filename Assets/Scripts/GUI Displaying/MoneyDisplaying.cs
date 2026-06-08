@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,13 +46,13 @@ public class MoneyDisplaying : MonoBehaviour
                 {
                     currentMoneyText.fontSize = 14;
                     currentMoneyText.fontStyle = FontStyle.Normal;
-                    currentMoneyText.text = "Not   Enough   Money!";
+                    currentMoneyText.text = "Not Enough Money!";
                 }
                 else
                 {
-                    currentMoneyText.fontSize = 10;
+                    currentMoneyText.fontSize = 14;
                     currentMoneyText.fontStyle = FontStyle.Bold;
-                    currentMoneyText.text = "Õ≈   ƒŒ—“¿“Õ‹Œ    Œÿ“≤¬!";
+                    currentMoneyText.text = "–ù–µ–¥–æ—Å—Ç–∞—Ç–Ω—å–æ –ì—Ä–æ—à–µ–π!";
                 }
                 yield return new WaitForSeconds(1f);
             }

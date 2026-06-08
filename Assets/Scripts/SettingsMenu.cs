@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject aboutUsMenu;
     [SerializeField] private Button ua;
     [SerializeField] private Button en;
     [SerializeField] private GameObject unmute;
@@ -24,6 +27,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
+
         Cursor.lockState = CursorLockMode.None;
         loadedData = DataSaver.loadData<PlayerInfo>("players");
         volume = loadedData.volumeSave;
@@ -107,5 +111,22 @@ public class SettingsMenu : MonoBehaviour
             bestRecordSave = loadedData.bestRecordSave
         };
             DataSaver.saveData(saveData, "players");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingsMenu != null && settingsMenu.activeSelf)
+            {
+                settingsMenu.SetActive(false);
+                if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+            }
+            else if (aboutUsMenu != null && aboutUsMenu.activeSelf)
+            {
+                aboutUsMenu.SetActive(false);
+                if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+            }
+        }
     }
 }

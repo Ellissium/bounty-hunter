@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +34,7 @@ public class AmmoDisplaying : MonoBehaviour
         {
             background.GetComponent<Image>().sprite = shortBackground;
             background.GetComponent<RectTransform>().sizeDelta = new Vector2(53f, 17f);
-            currentAmmoText.text = $"{ammoInCylinder.ToString()} / {ammoReload.ToString()}";
+            currentAmmoText.text = $"{ammoInCylinder.ToString()}/{ammoReload.ToString()}";
         } 
         else
         {
@@ -66,9 +66,9 @@ public class AmmoDisplaying : MonoBehaviour
                 }
                 else
                 {
-                    currentAmmoText.fontSize = 7;
+                    currentAmmoText.fontSize = 14;
                     currentAmmoText.fontStyle = FontStyle.Bold;
-                    currentAmmoText.text = "Õ≈Ã¿™ Õ¿¡ŒØ¬";
+                    currentAmmoText.text = "–ù–µ–º–∞—î –ü–∞—Ç—Ä–æ–Ω—ñ–≤!";
                 }
             }
             yield return new WaitForSeconds(1f);
